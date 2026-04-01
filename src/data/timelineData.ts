@@ -1,12 +1,9 @@
 import {
   FileText,
-  ClipboardCheck,
   Users,
   CreditCard,
   GraduationCap,
-  BookOpen,
   Send,
-  CheckCircle,
   ShieldCheck,
   FileBadge,
   Building,
