@@ -86,18 +86,17 @@ const Timeline = () => {
         </div>
       </div>
 
-      {/* Mobile: Detail Panel (bottom sheet) */}
-      <div className="lg:hidden">
-        {activeItem && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="fixed bottom-0 left-0 right-0 z-50 max-h-[60vh] overflow-y-auto border-t border-border bg-card p-5 rounded-t-2xl shadow-2xl"
-          >
-            <DetailPanel item={activeItem} onClose={() => setActiveItem(null)} />
-          </motion.div>
-        )}
-      </div>
+      {/* Mobile: Drawer from right */}
+      <Drawer open={!!activeItem && isMobile} onOpenChange={(open) => { if (!open) setActiveItem(null); }}>
+        <DrawerContent className="max-h-[85vh]">
+          <DrawerHeader className="text-left">
+            <DrawerTitle>{activeItem?.title}</DrawerTitle>
+          </DrawerHeader>
+          <div className="px-4 pb-6 overflow-y-auto">
+            {activeItem && <DetailPanel item={activeItem} onClose={() => setActiveItem(null)} />}
+          </div>
+        </DrawerContent>
+      </Drawer>
     </div>
   );
 };
