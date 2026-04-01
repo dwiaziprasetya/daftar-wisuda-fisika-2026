@@ -2,31 +2,37 @@ import {
   FileText,
   ClipboardCheck,
   Users,
-  Presentation,
+  CreditCard,
   GraduationCap,
   BookOpen,
   Send,
   CheckCircle,
   ShieldCheck,
   FileBadge,
+  Building,
+  Camera,
+  Library,
+  FlaskConical,
 } from "lucide-react";
 
 /**
  * ============================================
- *  DATA ROADMAP — PROSEDUR SIDANG S/D WISUDA
+ *  DATA ROADMAP — PROSEDUR DAFTAR WISUDA
  * ============================================
  *
- *  Cara menambah/mengubah tahapan:
- *  - Tambahkan objek baru ke array `mainTimeline` atau `hkiBranch`
- *  - Properti:
- *     step        : Nomor urut (string)
- *     title       : Judul singkat
- *     summary     : Ringkasan 1 baris (tampil di card)
- *     detail      : Penjelasan lengkap (tampil saat diklik)
- *     date        : Estimasi waktu
- *     icon        : Icon dari lucide-react (opsional)
- *     tag         : Label seperti "Wajib", "Administrasi" (opsional)
+ *  Struktur data mendukung 2 jenis node:
+ *
+ *  1. `step`     — Tahapan tunggal di jalur utama
+ *  2. `parallel` — Beberapa jalur yang berjalan bersamaan
+ *                   (ditampilkan bercabang ke kiri/kanan)
+ *
+ *  Cara menambah tahapan:
+ *  - Tambahkan objek baru ke array `timelineNodes`
+ *  - Untuk cabang paralel, gunakan type: "parallel"
+ *    dan isi `groups` dengan array jalur
  */
+
+/* ── Interfaces ─────────────────────────────── */
 
 export interface RoadmapResource {
   label: string;
@@ -45,124 +51,172 @@ export interface RoadmapItem {
   resources?: RoadmapResource[];
 }
 
-/** Cabang HKI — merge sebelum wisuda */
-export const hkiBranch: RoadmapItem[] = [
+export interface ParallelGroup {
+  id: string;
+  label: string;
+  /** Tailwind color class prefix, e.g. "violet", "amber", "sky" */
+  color: string;
+  side: "left" | "right";
+  items: RoadmapItem[];
+}
+
+export type TimelineNode =
+  | { type: "step"; item: RoadmapItem }
+  | { type: "parallel"; label: string; groups: ParallelGroup[] };
+
+/* ── Data ───────────────────────────────────── */
+
+export const timelineNodes: TimelineNode[] = [
   {
-    step: "HKI-1",
-    date: "Setelah Seminar Hasil",
-    title: "Pendaftaran HKI",
-    summary: "Daftarkan hasil penelitian untuk perlindungan Hak Kekayaan Intelektual.",
-    detail:
-      "Mahasiswa menyiapkan dokumen hasil penelitian (abstrak, deskripsi, dan data pendukung) untuk didaftarkan ke Dirjen KI melalui LPPM atau unit HKI kampus. Proses ini biasanya difasilitasi oleh dosen pembimbing.",
-    icon: ShieldCheck,
-    tag: "HKI",
+    type: "step",
+    item: {
+      step: "1",
+      date: "Setelah Sidang Skripsi",
+      title: "Pendaftaran Wisuda Online",
+      summary: "Isi formulir pendaftaran wisuda melalui portal akademik.",
+      detail:
+        "Login ke portal akademik, pilih menu 'Pendaftaran Wisuda', dan isi data yang diminta: nama lengkap sesuai ijazah, tempat/tanggal lahir, alamat, ukuran toga, dan data wali. Pastikan semua data benar karena akan tercetak di ijazah.",
+      icon: Send,
+      tag: "Administrasi",
+    },
   },
   {
-    step: "HKI-2",
-    date: "Proses Review",
-    title: "Verifikasi & Persetujuan HKI",
-    summary: "Dokumen diverifikasi dan disetujui oleh pihak kampus & Dirjen KI.",
-    detail:
-      "Unit HKI kampus memverifikasi kelengkapan dan keaslian dokumen, lalu mengirimkan ke Dirjen Kekayaan Intelektual. Proses ini membutuhkan waktu beberapa minggu hingga sertifikat terbit.",
-    icon: FileBadge,
-    tag: "HKI",
+    type: "parallel",
+    label: "Proses Paralel — selesaikan semua jalur",
+    groups: [
+      {
+        id: "berkas",
+        label: "Kelengkapan Berkas",
+        color: "sky",
+        side: "left",
+        items: [
+          {
+            step: "2A",
+            date: "Setelah Daftar",
+            title: "Upload Berkas Wisuda",
+            summary: "Upload pas foto toga, scan ijazah SMA, dan dokumen pendukung.",
+            detail:
+              "Siapkan dan upload: pas foto berwarna background merah (ukuran 3×4 dan 4×6), scan ijazah SMA/sederajat, scan KTP, dan scan transkrip sementara. Pastikan file sesuai format yang diminta (JPG/PDF, maks 2MB).",
+            icon: Camera,
+            tag: "Administrasi",
+          },
+          {
+            step: "2B",
+            date: "Verifikasi",
+            title: "Verifikasi Data Ijazah",
+            summary: "Periksa ejaan nama, tempat lahir, dan gelar di draft ijazah.",
+            detail:
+              "Periksa draft data ijazah yang ditampilkan di portal. Pastikan ejaan nama, tempat/tanggal lahir, dan gelar (S.Si) sudah benar. Jika ada kesalahan, segera ajukan koreksi ke bagian akademik sebelum batas waktu.",
+            icon: FileText,
+            tag: "Administrasi",
+          },
+        ],
+      },
+      {
+        id: "tanggungan",
+        label: "Bebas Tanggungan",
+        color: "amber",
+        side: "right",
+        items: [
+          {
+            step: "3A",
+            date: "Bisa Paralel",
+            title: "Bebas Tanggungan Perpustakaan",
+            summary: "Pastikan tidak ada buku yang belum dikembalikan.",
+            detail:
+              "Kunjungi perpustakaan pusat dan perpustakaan jurusan untuk mendapatkan surat keterangan bebas tanggungan. Kembalikan semua buku pinjaman dan selesaikan denda jika ada.",
+            icon: Library,
+            tag: "Wajib",
+          },
+          {
+            step: "3B",
+            date: "Bisa Paralel",
+            title: "Bebas Tanggungan Laboratorium",
+            summary: "Serahkan surat bebas tanggungan dari setiap lab yang digunakan.",
+            detail:
+              "Kunjungi semua laboratorium tempat Anda pernah praktikum atau penelitian. Pastikan tidak ada alat/bahan yang belum dikembalikan. Dapatkan tanda tangan kepala lab di formulir bebas tanggungan.",
+            icon: FlaskConical,
+            tag: "Wajib",
+          },
+          {
+            step: "3C",
+            date: "Bisa Paralel",
+            title: "Bebas Tanggungan Keuangan",
+            summary: "Lunasi seluruh biaya kuliah dan administrasi.",
+            detail:
+              "Pastikan semua tagihan SPP, biaya wisuda, dan biaya administrasi lainnya sudah lunas. Cetak bukti pembayaran dari portal keuangan. Jika ada keringanan/beasiswa, pastikan surat keterangan sudah dilampirkan.",
+            icon: Building,
+            tag: "Wajib",
+          },
+        ],
+      },
+      {
+        id: "hki",
+        label: "Cabang HKI",
+        color: "violet",
+        side: "right",
+        items: [
+          {
+            step: "H1",
+            date: "Opsional",
+            title: "Pendaftaran HKI",
+            summary: "Daftarkan hasil penelitian untuk perlindungan kekayaan intelektual.",
+            detail:
+              "Mahasiswa menyiapkan dokumen hasil penelitian (abstrak, deskripsi, dan data pendukung) untuk didaftarkan ke Dirjen KI melalui LPPM atau unit HKI kampus. Proses ini difasilitasi oleh dosen pembimbing.",
+            icon: ShieldCheck,
+            tag: "HKI",
+          },
+          {
+            step: "H2",
+            date: "Proses Review",
+            title: "Verifikasi & Sertifikat HKI",
+            summary: "Dokumen diverifikasi dan sertifikat diterbitkan.",
+            detail:
+              "Unit HKI kampus memverifikasi kelengkapan dan keaslian dokumen, lalu mengirimkan ke Dirjen Kekayaan Intelektual. Proses ini membutuhkan waktu beberapa minggu hingga sertifikat terbit.",
+            icon: FileBadge,
+            tag: "HKI",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    type: "step",
+    item: {
+      step: "4",
+      date: "Setelah Semua Selesai",
+      title: "Validasi & Pembayaran Wisuda",
+      summary: "Semua berkas divalidasi, lakukan pembayaran biaya wisuda.",
+      detail:
+        "Bagian akademik memvalidasi seluruh berkas dan surat bebas tanggungan. Setelah dinyatakan lengkap, lakukan pembayaran biaya wisuda melalui bank yang ditunjuk. Upload bukti pembayaran ke portal.",
+      icon: CreditCard,
+      tag: "Administrasi",
+    },
+  },
+  {
+    type: "step",
+    item: {
+      step: "5",
+      date: "H-3 Wisuda",
+      title: "Gladi Bersih",
+      summary: "Ikuti gladi bersih sesuai jadwal yang ditetapkan.",
+      detail:
+        "Hadiri gladi bersih di gedung wisuda sesuai jadwal fakultas. Kenakan pakaian rapi (belum toga). Anda akan mendapat arahan tentang alur prosesi, posisi duduk, dan tata cara penerimaan ijazah. Kehadiran wajib — ketidakhadiran bisa menunda wisuda.",
+      icon: Users,
+      tag: "Wajib",
+    },
+  },
+  {
+    type: "step",
+    item: {
+      step: "6",
+      date: "Hari H 🎉",
+      title: "Wisuda",
+      summary: "Hadiri upacara wisuda dan terima ijazah.",
+      detail:
+        "Hadir di venue wisuda 2 jam sebelum acara dimulai. Kenakan toga dan perlengkapan yang sudah disiapkan. Ikuti prosesi dengan khidmat. Setelah acara, Anda resmi menyandang gelar Sarjana Sains (S.Si)! 🎓🎉",
+      icon: GraduationCap,
+      tag: "Selesai",
+    },
   },
 ];
-
-/** Timeline utama */
-export const mainTimeline: RoadmapItem[] = [
-  {
-    step: "1",
-    date: "Semester 7–8",
-    title: "Pengajuan Judul Skripsi",
-    summary: "Ajukan topik skripsi untuk mendapat persetujuan.",
-    detail:
-      "Mahasiswa mengajukan topik/judul skripsi kepada koordinator skripsi atau dosen pembimbing akademik. Judul harus relevan dengan bidang Fisika dan belum pernah digunakan. Siapkan latar belakang singkat dan rumusan masalah.",
-    icon: Send,
-    tag: "Persiapan",
-  },
-  {
-    step: "2",
-    date: "Setelah Judul Disetujui",
-    title: "Penunjukan Dosen Pembimbing",
-    summary: "Jurusan menetapkan dosen pembimbing berdasarkan topik.",
-    detail:
-      "Jurusan menetapkan 1–2 dosen pembimbing berdasarkan keahlian dan ketersediaan. Mahasiswa akan mendapat SK pembimbing yang harus disimpan sebagai dokumen administrasi. Mulai buat jadwal bimbingan rutin.",
-    icon: Users,
-    tag: "Persiapan",
-  },
-  {
-    step: "3",
-    date: "Proses Bimbingan",
-    title: "Pelaksanaan Penelitian & Bimbingan",
-    summary: "Lakukan penelitian dan tulis skripsi di bawah bimbingan dosen.",
-    detail:
-      "Mahasiswa melakukan penelitian, pengambilan data, analisis, dan penulisan skripsi. Bimbingan dilakukan minimal 2 minggu sekali. Pastikan kartu bimbingan terisi dan ditandatangani setiap pertemuan. Simpan semua data mentah dan backup secara berkala.",
-    icon: BookOpen,
-  },
-  {
-    step: "4",
-    date: "Setelah Skripsi Selesai",
-    title: "Pendaftaran Seminar Hasil",
-    summary: "Daftar seminar dengan melengkapi berkas yang diperlukan.",
-    detail:
-      "Berkas yang dibutuhkan: draft skripsi (minimal BAB I–IV), lembar persetujuan pembimbing, kartu bimbingan yang terisi, KRS aktif, dan bukti bebas tanggungan laboratorium. Daftar ke bagian akademik jurusan sesuai jadwal yang ditetapkan.",
-    icon: ClipboardCheck,
-    tag: "Administrasi",
-  },
-  {
-    step: "5",
-    date: "Sesuai Jadwal Jurusan",
-    title: "Seminar Hasil Penelitian",
-    summary: "Presentasi hasil penelitian di hadapan dosen penguji.",
-    detail:
-      "Mahasiswa mempresentasikan hasil penelitian selama ±20 menit, dilanjutkan sesi tanya jawab ±30 menit. Dosen penguji memberikan masukan, catatan revisi, dan penilaian. Siapkan slide presentasi yang jelas dan ringkas. Hasil seminar berupa catatan revisi yang harus diselesaikan.",
-    icon: Presentation,
-    tag: "Wajib",
-  },
-  {
-    step: "6",
-    date: "Setelah Revisi Seminar",
-    title: "Pendaftaran Sidang Skripsi",
-    summary: "Lengkapi persyaratan sidang dan daftar ke jurusan.",
-    detail:
-      "Persyaratan sidang: skripsi final yang sudah direvisi, bukti bebas tanggungan perpustakaan & keuangan, transkrip sementara, pas foto, dan persetujuan pembimbing bahwa revisi sudah selesai. Pastikan semua berkas lengkap sebelum mendaftar.",
-    icon: FileText,
-    tag: "Administrasi",
-  },
-  {
-    step: "7",
-    date: "Sesuai Jadwal Jurusan",
-    title: "Sidang Skripsi",
-    summary: "Ujian akhir mempertahankan hasil penelitian.",
-    detail:
-      "Ujian sidang berlangsung ±60–90 menit. Mahasiswa mempresentasikan keseluruhan skripsi dan menjawab pertanyaan dari tim penguji (biasanya 3–4 dosen). Penilaian meliputi kualitas penelitian, penguasaan materi, dan kemampuan presentasi. Hasil: Lulus / Lulus dengan revisi / Tidak lulus.",
-    icon: Presentation,
-    tag: "Wajib",
-  },
-  {
-    step: "8",
-    date: "Setelah Dinyatakan Lulus",
-    title: "Revisi & Pengumpulan Skripsi Final",
-    summary: "Revisi sesuai masukan penguji, kumpulkan hard & soft copy.",
-    detail:
-      "Selesaikan revisi maksimal 2 minggu setelah sidang (atau sesuai ketentuan jurusan). Kumpulkan hard copy (biasanya 3–4 eksemplar) dan soft copy (CD/flash drive) ke jurusan dan perpustakaan. Dapatkan tanda tangan pengesahan dari semua penguji dan dekan.",
-    icon: CheckCircle,
-    tag: "Administrasi",
-  },
-  {
-    step: "9",
-    date: "Periode Wisuda",
-    title: "Wisuda 🎓",
-    summary: "Daftar wisuda dan hadiri upacara wisuda.",
-    detail:
-      "Daftar wisuda melalui portal akademik, lengkapi administrasi (foto toga, pembayaran wisuda, verifikasi data ijazah). Ikuti gladi bersih sesuai jadwal. Hadiri upacara wisuda bersama keluarga. Selamat, Anda resmi menyandang gelar Sarjana Sains (S.Si)! 🎉",
-    icon: GraduationCap,
-    tag: "Selesai",
-  },
-];
-
-/** Index di mainTimeline tempat cabang HKI bergabung (sebelum "Revisi & Pengumpulan") */
-export const HKI_MERGE_INDEX = 7; // step 8 — index 7
-/** Index di mainTimeline tempat cabang HKI mulai bercabang (setelah "Seminar Hasil") */
-export const HKI_BRANCH_INDEX = 5; // step 6 — index 5
