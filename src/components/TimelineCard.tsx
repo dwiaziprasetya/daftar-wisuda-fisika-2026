@@ -1,4 +1,4 @@
-import { } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import type { RoadmapItem } from "@/data/timelineData";
