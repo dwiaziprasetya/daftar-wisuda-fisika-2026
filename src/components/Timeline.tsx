@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { GitBranch } from "lucide-react";
 import {
   mainTimeline,
@@ -8,30 +8,20 @@ import {
   type RoadmapItem,
 } from "@/data/timelineData";
 import { TimelineCard, DetailPanel } from "./TimelineCard";
-import { useIsMobile } from "@/hooks/use-mobile";
-import {
-  Drawer,
-  DrawerContent,
-  DrawerHeader,
-  DrawerTitle,
-} from "@/components/ui/drawer";
 
 const Timeline = () => {
   const [activeItem, setActiveItem] = useState<RoadmapItem | null>(null);
-  const isMobile = useIsMobile();
 
   const handleClick = (item: RoadmapItem) => {
     setActiveItem((prev) => (prev?.step === item.step ? null : item));
   };
 
   return (
-    <div className="relative mx-auto max-w-5xl px-4 py-10">
-      <div className="flex gap-8">
-        {/* Left: Timeline */}
+    <>
+      <div className="relative mx-auto max-w-5xl px-4 py-10">
         <div className="flex-1 min-w-0">
           {mainTimeline.map((item, index) => (
             <div key={item.step}>
-              {/* Render HKI branch before the merge point */}
               {index === HKI_BRANCH_INDEX && (
                 <HKIBranch
                   items={hkiBranch}
@@ -48,9 +38,9 @@ const Timeline = () => {
                 className="relative flex gap-4"
               >
                 {/* Line + Dot */}
-                <div className="flex flex-col items-center shrink-0 w-10">
+                <div className="flex flex-col items-center shrink-0 w-8 sm:w-10">
                   <motion.div
-                    className={`relative z-10 flex h-10 w-10 items-center justify-center rounded-full border-2 bg-card ${
+                    className={`relative z-10 flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-full border-2 bg-card ${
                       activeItem?.step === item.step
                         ? "border-primary shadow-[0_0_16px_hsl(var(--ring)/0.3)]"
                         : "border-border"
@@ -60,7 +50,7 @@ const Timeline = () => {
                     viewport={{ once: true }}
                     transition={{ type: "spring", stiffness: 300, damping: 20, delay: index * 0.06 + 0.1 }}
                   >
-                    <span className="text-xs font-bold text-muted-foreground">{item.step}</span>
+                    <span className="text-[10px] sm:text-xs font-bold text-muted-foreground">{item.step}</span>
                   </motion.div>
                   {index < mainTimeline.length - 1 && (
                     <div className="w-px flex-1 bg-border" />
@@ -68,7 +58,7 @@ const Timeline = () => {
                 </div>
 
                 {/* Card */}
-                <div className="flex-1 pb-8">
+                <div className="flex-1 pb-6 sm:pb-8">
                   <TimelineCard
                     item={item}
                     isActive={activeItem?.step === item.step}
@@ -79,33 +69,35 @@ const Timeline = () => {
             </div>
           ))}
         </div>
-
-        {/* Right: Detail Panel (desktop) */}
-        <div className="hidden lg:block w-80 shrink-0">
-          {activeItem ? (
-            <DetailPanel item={activeItem} onClose={() => setActiveItem(null)} />
-          ) : (
-            <div className="sticky top-8 rounded-xl border border-dashed border-border p-6 text-center">
-              <p className="text-sm text-muted-foreground">
-                Klik salah satu tahapan untuk melihat detail lengkap
-              </p>
-            </div>
-          )}
-        </div>
       </div>
 
-      {/* Mobile: Drawer from right */}
-      <Drawer open={!!activeItem && isMobile} onOpenChange={(open) => { if (!open) setActiveItem(null); }}>
-        <DrawerContent className="max-h-[85vh]">
-          <DrawerHeader className="text-left">
-            <DrawerTitle>{activeItem?.title}</DrawerTitle>
-          </DrawerHeader>
-          <div className="px-4 pb-6 overflow-y-auto">
-            {activeItem && <DetailPanel item={activeItem} onClose={() => setActiveItem(null)} />}
-          </div>
-        </DrawerContent>
-      </Drawer>
-    </div>
+      {/* Right-side overlay panel (roadmap.sh style) */}
+      <AnimatePresence>
+        {activeItem && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm"
+              onClick={() => setActiveItem(null)}
+            />
+            {/* Panel */}
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 30, stiffness: 300 }}
+              className="fixed top-0 right-0 z-50 h-full w-full sm:w-[420px] md:w-[480px] border-l border-border bg-card shadow-2xl overflow-y-auto"
+            >
+              <DetailPanel item={activeItem} onClose={() => setActiveItem(null)} />
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 
@@ -129,7 +121,7 @@ function HKIBranch({
     >
       {/* Branch label */}
       <div className="flex gap-4">
-        <div className="flex flex-col items-center shrink-0 w-10">
+        <div className="flex flex-col items-center shrink-0 w-8 sm:w-10">
           <div className="w-px flex-1 bg-border" />
         </div>
         <div className="flex-1 pb-3">
@@ -146,9 +138,8 @@ function HKIBranch({
       {/* HKI items */}
       {items.map((item, i) => (
         <div key={item.step} className="flex gap-4">
-          <div className="flex flex-col items-center shrink-0 w-10">
-            {/* Branched line with different style */}
-            <div className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full border border-violet-500/40 bg-card">
+          <div className="flex flex-col items-center shrink-0 w-8 sm:w-10">
+            <div className="relative z-10 flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full border border-violet-500/40 bg-card">
               <span className="text-[10px] font-bold text-violet-400">{i + 1}</span>
             </div>
             <div className="w-px flex-1 bg-violet-500/20" />
@@ -165,7 +156,7 @@ function HKIBranch({
 
       {/* Merge indicator */}
       <div className="flex gap-4">
-        <div className="flex flex-col items-center shrink-0 w-10">
+        <div className="flex flex-col items-center shrink-0 w-8 sm:w-10">
           <div className="w-px h-4 bg-violet-500/20" />
         </div>
         <div className="flex-1 pb-4">

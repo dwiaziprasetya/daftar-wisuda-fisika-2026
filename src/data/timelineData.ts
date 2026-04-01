@@ -28,6 +28,12 @@ import {
  *     tag         : Label seperti "Wajib", "Administrasi" (opsional)
  */
 
+export interface RoadmapResource {
+  label: string;
+  title: string;
+  url: string;
+}
+
 export interface RoadmapItem {
   step: string;
   date: string;
@@ -36,6 +42,7 @@ export interface RoadmapItem {
   detail: string;
   icon?: React.ComponentType<{ className?: string }>;
   tag?: string;
+  resources?: RoadmapResource[];
 }
 
 /** Cabang HKI — merge sebelum wisuda */
