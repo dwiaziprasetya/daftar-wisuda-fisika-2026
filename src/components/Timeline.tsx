@@ -18,6 +18,7 @@ import {
 
 const Timeline = () => {
   const [activeItem, setActiveItem] = useState<RoadmapItem | null>(null);
+  const isMobile = useIsMobile();
 
   const handleClick = (item: RoadmapItem) => {
     setActiveItem((prev) => (prev?.step === item.step ? null : item));
