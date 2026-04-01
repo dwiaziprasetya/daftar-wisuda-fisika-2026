@@ -5,7 +5,6 @@ import {
   mainTimeline,
   hkiBranch,
   HKI_BRANCH_INDEX,
-  HKI_MERGE_INDEX,
   type RoadmapItem,
 } from "@/data/timelineData";
 import { TimelineCard, DetailPanel } from "./TimelineCard";
