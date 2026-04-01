@@ -8,6 +8,13 @@ import {
   type RoadmapItem,
 } from "@/data/timelineData";
 import { TimelineCard, DetailPanel } from "./TimelineCard";
+import { useIsMobile } from "@/hooks/use-mobile";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+} from "@/components/ui/drawer";
 
 const Timeline = () => {
   const [activeItem, setActiveItem] = useState<RoadmapItem | null>(null);
