@@ -10,24 +10,10 @@ import {
   Camera,
   Library,
   FlaskConical,
+  CheckCircle,
+  ClipboardCheck,
+  BookOpen,
 } from "lucide-react";
-
-/**
- * ============================================
- *  DATA ROADMAP — PROSEDUR DAFTAR WISUDA
- * ============================================
- *
- *  Struktur data mendukung 2 jenis node:
- *
- *  1. `step`     — Tahapan tunggal di jalur utama
- *  2. `parallel` — Beberapa jalur yang berjalan bersamaan
- *                   (ditampilkan bercabang ke kiri/kanan)
- *
- *  Cara menambah tahapan:
- *  - Tambahkan objek baru ke array `timelineNodes`
- *  - Untuk cabang paralel, gunakan type: "parallel"
- *    dan isi `groups` dengan array jalur
- */
 
 /* ── Interfaces ─────────────────────────────── */
 
@@ -51,7 +37,6 @@ export interface RoadmapItem {
 export interface ParallelGroup {
   id: string;
   label: string;
-  /** Tailwind color class prefix, e.g. "violet", "amber", "sky" */
   color: string;
   side: "left" | "right";
   items: RoadmapItem[];
@@ -64,31 +49,59 @@ export type TimelineNode =
 /* ── Data ───────────────────────────────────── */
 
 export const timelineNodes: TimelineNode[] = [
+  /* ▸ Step 1 — Lembar Pengesahan */
   {
     type: "step",
     item: {
       step: "1",
       date: "Setelah Sidang Skripsi",
-      title: "Pendaftaran Wisuda Online",
-      summary: "Isi formulir pendaftaran wisuda melalui portal akademik.",
+      title: "Revisi & Lembar Pengesahan",
+      summary: "Selesaikan revisi skripsi dan kumpulkan tanda tangan lembar pengesahan.",
       detail:
-        "Login ke portal akademik, pilih menu 'Pendaftaran Wisuda', dan isi data yang diminta: nama lengkap sesuai ijazah, tempat/tanggal lahir, alamat, ukuran toga, dan data wali. Pastikan semua data benar karena akan tercetak di ijazah.",
-      icon: Send,
+        "Setelah sidang skripsi, lakukan revisi sesuai catatan penguji. Cetak lembar pengesahan dan kumpulkan tanda tangan dari dosen pembimbing, ketua penguji, dan Ketua Jurusan. Lembar pengesahan yang sudah lengkap menjadi syarat untuk melanjutkan proses berikutnya.",
+      icon: ClipboardCheck,
+      tag: "Wajib",
+    },
+  },
+
+  /* ▸ Step 2 — Upload Skripsi Final */
+  {
+    type: "step",
+    item: {
+      step: "2",
+      date: "Setelah Revisi Disetujui",
+      title: "Upload Skripsi Final & Jurnal",
+      summary: "Upload naskah skripsi final dan jurnal ke repositori kampus.",
+      detail:
+        "Upload file skripsi final (PDF) beserta jurnal/artikel ilmiah ke repositori digital kampus. Pastikan format sesuai pedoman penulisan. Beberapa kampus juga mewajibkan upload ke portal jurnal nasional.",
+      icon: BookOpen,
       tag: "Administrasi",
     },
   },
+
+  /* ▸ Parallel — Daftar Wisuda + Bebas Tanggungan + HKI */
   {
     type: "parallel",
     label: "Proses Paralel — selesaikan semua jalur",
     groups: [
       {
-        id: "berkas",
-        label: "Kelengkapan Berkas",
+        id: "wisuda",
+        label: "Pendaftaran Wisuda",
         color: "sky",
         side: "left",
         items: [
           {
-            step: "2A",
+            step: "3A",
+            date: "Bisa Duluan",
+            title: "Daftar Wisuda Online",
+            summary: "Isi formulir pendaftaran wisuda melalui portal akademik.",
+            detail:
+              "Login ke portal akademik, pilih menu 'Pendaftaran Wisuda', dan isi data yang diminta: nama lengkap sesuai ijazah, tempat/tanggal lahir, alamat, ukuran toga, dan data wali. Pastikan semua data benar karena akan tercetak di ijazah.",
+            icon: Send,
+            tag: "Administrasi",
+          },
+          {
+            step: "3B",
             date: "Setelah Daftar",
             title: "Upload Berkas Wisuda",
             summary: "Upload pas foto toga, scan ijazah SMA, dan dokumen pendukung.",
@@ -98,13 +111,23 @@ export const timelineNodes: TimelineNode[] = [
             tag: "Administrasi",
           },
           {
-            step: "2B",
+            step: "3C",
             date: "Verifikasi",
             title: "Verifikasi Data Ijazah",
             summary: "Periksa ejaan nama, tempat lahir, dan gelar di draft ijazah.",
             detail:
-              "Periksa draft data ijazah yang ditampilkan di portal. Pastikan ejaan nama, tempat/tanggal lahir, dan gelar (S.Si) sudah benar. Jika ada kesalahan, segera ajukan koreksi ke bagian akademik sebelum batas waktu.",
+              "Periksa draft data ijazah yang ditampilkan di portal. Pastikan ejaan nama, tempat/tanggal lahir, dan gelar sudah benar. Jika ada kesalahan, segera ajukan koreksi ke bagian akademik sebelum batas waktu.",
             icon: FileText,
+            tag: "Administrasi",
+          },
+          {
+            step: "3D",
+            date: "Setelah Validasi",
+            title: "Pembayaran Wisuda",
+            summary: "Lakukan pembayaran biaya wisuda melalui bank yang ditunjuk.",
+            detail:
+              "Setelah berkas dinyatakan lengkap, lakukan pembayaran biaya wisuda melalui bank/payment gateway yang ditunjuk. Upload bukti pembayaran ke portal akademik.",
+            icon: CreditCard,
             tag: "Administrasi",
           },
         ],
@@ -116,7 +139,7 @@ export const timelineNodes: TimelineNode[] = [
         side: "right",
         items: [
           {
-            step: "3A",
+            step: "4A",
             date: "Bisa Paralel",
             title: "Bebas Tanggungan Perpustakaan",
             summary: "Pastikan tidak ada buku yang belum dikembalikan.",
@@ -126,7 +149,7 @@ export const timelineNodes: TimelineNode[] = [
             tag: "Wajib",
           },
           {
-            step: "3B",
+            step: "4B",
             date: "Bisa Paralel",
             title: "Bebas Tanggungan Laboratorium",
             summary: "Serahkan surat bebas tanggungan dari setiap lab yang digunakan.",
@@ -136,12 +159,12 @@ export const timelineNodes: TimelineNode[] = [
             tag: "Wajib",
           },
           {
-            step: "3C",
+            step: "4C",
             date: "Bisa Paralel",
             title: "Bebas Tanggungan Keuangan",
             summary: "Lunasi seluruh biaya kuliah dan administrasi.",
             detail:
-              "Pastikan semua tagihan SPP, biaya wisuda, dan biaya administrasi lainnya sudah lunas. Cetak bukti pembayaran dari portal keuangan. Jika ada keringanan/beasiswa, pastikan surat keterangan sudah dilampirkan.",
+              "Pastikan semua tagihan SPP dan biaya administrasi lainnya sudah lunas. Cetak bukti pembayaran dari portal keuangan.",
             icon: Building,
             tag: "Wajib",
           },
@@ -149,12 +172,12 @@ export const timelineNodes: TimelineNode[] = [
       },
       {
         id: "hki",
-        label: "Cabang HKI",
+        label: "Cabang HKI (Opsional)",
         color: "violet",
         side: "right",
         items: [
           {
-            step: "H1",
+            step: "5A",
             date: "Opsional",
             title: "Pendaftaran HKI",
             summary: "Daftarkan hasil penelitian untuk perlindungan kekayaan intelektual.",
@@ -164,7 +187,7 @@ export const timelineNodes: TimelineNode[] = [
             tag: "HKI",
           },
           {
-            step: "H2",
+            step: "5B",
             date: "Proses Review",
             title: "Verifikasi & Sertifikat HKI",
             summary: "Dokumen diverifikasi dan sertifikat diterbitkan.",
@@ -177,43 +200,49 @@ export const timelineNodes: TimelineNode[] = [
       },
     ],
   },
-  {
-    type: "step",
-    item: {
-      step: "4",
-      date: "Setelah Semua Selesai",
-      title: "Validasi & Pembayaran Wisuda",
-      summary: "Semua berkas divalidasi, lakukan pembayaran biaya wisuda.",
-      detail:
-        "Bagian akademik memvalidasi seluruh berkas dan surat bebas tanggungan. Setelah dinyatakan lengkap, lakukan pembayaran biaya wisuda melalui bank yang ditunjuk. Upload bukti pembayaran ke portal.",
-      icon: CreditCard,
-      tag: "Administrasi",
-    },
-  },
-  {
-    type: "step",
-    item: {
-      step: "5",
-      date: "H-3 Wisuda",
-      title: "Gladi Bersih",
-      summary: "Ikuti gladi bersih sesuai jadwal yang ditetapkan.",
-      detail:
-        "Hadiri gladi bersih di gedung wisuda sesuai jadwal fakultas. Kenakan pakaian rapi (belum toga). Anda akan mendapat arahan tentang alur prosesi, posisi duduk, dan tata cara penerimaan ijazah. Kehadiran wajib — ketidakhadiran bisa menunda wisuda.",
-      icon: Users,
-      tag: "Wajib",
-    },
-  },
+
+  /* ▸ Step — Gladi Bersih */
   {
     type: "step",
     item: {
       step: "6",
+      date: "H-3 Wisuda",
+      title: "Gladi Bersih",
+      summary: "Ikuti gladi bersih sesuai jadwal yang ditetapkan.",
+      detail:
+        "Hadiri gladi bersih di gedung wisuda sesuai jadwal fakultas. Kenakan pakaian rapi (belum toga). Anda akan mendapat arahan tentang alur prosesi, posisi duduk, dan tata cara penerimaan ijazah. Kehadiran wajib.",
+      icon: Users,
+      tag: "Wajib",
+    },
+  },
+
+  /* ▸ Step — Wisuda */
+  {
+    type: "step",
+    item: {
+      step: "7",
       date: "Hari H 🎉",
       title: "Wisuda",
       summary: "Hadiri upacara wisuda dan terima ijazah.",
       detail:
-        "Hadir di venue wisuda 2 jam sebelum acara dimulai. Kenakan toga dan perlengkapan yang sudah disiapkan. Ikuti prosesi dengan khidmat. Setelah acara, Anda resmi menyandang gelar Sarjana Sains (S.Si)! 🎓🎉",
+        "Hadir di venue wisuda 2 jam sebelum acara dimulai. Kenakan toga dan perlengkapan yang sudah disiapkan. Ikuti prosesi dengan khidmat.",
       icon: GraduationCap,
       tag: "Selesai",
+    },
+  },
+
+  /* ▸ Step — SKL Fakultas (AKHIR) */
+  {
+    type: "step",
+    item: {
+      step: "8",
+      date: "Setelah Wisuda",
+      title: "SKL Fakultas",
+      summary: "Terima Surat Keterangan Lulus — tidak ada tanggungan lagi! 🎓",
+      detail:
+        "Setelah seluruh proses selesai dan tidak ada tanggungan tersisa, fakultas menerbitkan Surat Keterangan Lulus (SKL). SKL ini menjadi bukti resmi bahwa Anda telah menyelesaikan seluruh kewajiban akademik dan administrasi. Selamat, Anda resmi lulus! 🎉",
+      icon: CheckCircle,
+      tag: "Final ✅",
     },
   },
 ];
