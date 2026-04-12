@@ -10,10 +10,10 @@ const Index = () => {
           <span className="text-xs font-medium text-muted-foreground">Jurusan Fisika</span>
         </div>
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-foreground">
-          Prosedur Daftar Wisuda
+          Prosedur Kelulusan & Wisuda
         </h1>
         <p className="mt-2 text-muted-foreground max-w-md mx-auto text-sm">
-          Roadmap lengkap prosedur pendaftaran wisuda. Klik tahapan untuk detail.
+          Roadmap lengkap dari lembar pengesahan hingga SKL Fakultas. Klik tahapan untuk detail.
         </p>
       </header>
       <Timeline />
