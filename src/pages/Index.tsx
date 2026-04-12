@@ -1,6 +1,7 @@
 import { GraduationCap } from "lucide-react";
 import Timeline from "@/components/Timeline";
 import ThemeToggle from "@/components/ThemeToggle";
+import { APP_CONFIG } from "@/config/appConfig";
 
 const Index = () => {
   return (
@@ -21,12 +22,12 @@ const Index = () => {
         </p>
       </header>
       <Timeline />
-      <footer className="pb-10 text-center">
+      <footer className="pb-10 text-center space-y-2">
         <p className="text-[11px] text-muted-foreground">
-          Edit data di{" "}
-          <code className="rounded bg-secondary px-1.5 py-0.5 text-[10px] text-primary font-mono">
-            src/data/timelineData.ts
-          </code>
+          Terakhir di update:{" "}
+          <span className="font-medium text-foreground">
+            Wisuda {APP_CONFIG.wisudaTerakhir}
+          </span>
         </p>
       </footer>
     </div>

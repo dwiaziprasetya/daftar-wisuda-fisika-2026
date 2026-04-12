@@ -155,7 +155,7 @@ export const timelineNodes: TimelineNode[] = [
 
             Setelah menunggu beberapa saat, nama akan dipanggil dan mahasiswa akan menerima **Surat Bebas Pustaka Perpustakaan FSM**.
             `,
-            icon: Library,
+            icon: FileText,
             tag: "Wajib",
           },
           {
@@ -181,7 +181,7 @@ export const timelineNodes: TimelineNode[] = [
 
               **Catatan: Seluruh proses, kecuali tanda tangan Kaprodi, dapat dilakukan secara paralel.**
             `,
-            icon: FolderCheck,
+            icon: FileText,
             tag: "Wajib",
           },
         ],
@@ -322,10 +322,26 @@ export const timelineNodes: TimelineNode[] = [
             date: "Setelah Bebas Dept",
             title: "SKL Departemen",
             summary:
-              "Kirim berkas termasuk Surat Bebas Departemen ke Bu Iin via WA, isi biodata, dan dapatkan SKL Departemen. Berkas yang dikirim",
-            detail:
-              "Kirimkan beberapa file termasuk Surat Bebas Departemen Fisika ke WA japri Bu Iin. Kemudian isi beberapa informasi biodata yang diminta. Setelah diproses, Anda akan mendapatkan SKL Departemen dan Surat Permohonan SKL Fakultas.",
-            icon: Mail,
+              "Mengirim berkas ke Bu Iin via WA Japri",
+            detail: `
+              Mengirim berkas (softfile) ke Bu Iin via Wa. berkas yang dikirim:
+              1. Pas Foto berwarna
+              2. DPA
+              3. Scan KTP
+              4. Surat Keterangan Bebas Lab
+              5. Surat Keterangan Bebas Departemen
+              6. Validasi SKPI
+              7. SKPI
+              8. Sertifikat SKPI
+              9. Sertifikat TOEFL
+              10. Screenshot Bukti Kelulusan SSO
+              11. Bukti Pendaftaran HKI
+
+              Setelah mengirim lewat WA akan diminta mengisi data diri di WA. Tunggu beberapa saat di departemen maka akan mendapatkan hard file:
+              1. SKL Departemen
+              2. Surat Permohonan SKL Fakultas 
+            `,
+            icon: FileText,
             tag: "Wajib",
           },
           {
@@ -333,10 +349,17 @@ export const timelineNodes: TimelineNode[] = [
             date: "Langkah Terakhir",
             title: "SKL Fakultas",
             summary:
-              "Bawa dokumen hard file ke AP Lantai 2 bagian resepsionis.",
-            detail:
-              "Ini adalah langkah terakhir untuk kelulusan. Bawa beberapa dokumen hard file (termasuk SKL Departemen dan Surat Permohonan SKL Fakultas) ke AP Lantai 2 bagian resepsionis. Serahkan berkas dan tunggu proses penerbitan SKL Fakultas.",
-            icon: Building,
+              "Menyerahkan dokumen ke AP Lantai 2",
+            detail: `
+              Datang ke Gedung AP Lantai 2 bagian resepsionis, dengan melampirkan dokumen:
+                1. Foto copy Kartu Mahasiswa (KTM)
+                2. Pas foto hitam putih/berwarna ukuran 4x6 sebanyak 2 lembar
+                3. Foto copy Surat Bebas Departemen
+                4. Foto copy SKL Departemen
+                5. Bukti Pendaftaran HKI
+                6. Ditinggal saja selama 3 hari kerja
+            `,
+            icon: FileText,
             tag: "Wajib",
           },
           {
@@ -344,7 +367,7 @@ export const timelineNodes: TimelineNode[] = [
             date: "3 Hari Kerja",
             title: "Pengambilan dan Verifikasi SKL Fakultas",
             summary:
-              "Pengambilan dan verifikasi SKL Fakultas setelah 3 hari kerja.",
+              "Pengambilan SKL Fakultas setelah 3 hari kerja.",
             detail: `
               SKL Fakultas akan jadi dalam 3 hari kerja dan diambil di resepsionis lt. 1. Setelah jadi, SKL harus diverifikasi:
 
@@ -354,7 +377,7 @@ export const timelineNodes: TimelineNode[] = [
               4. UPA akan meminta 1 lembar untuk arsip Fakultas
               5. Sisa 4 lembar untuk keperluan pribadi (lamaran kerja, dll).
             `,
-            icon: Printer,
+            icon: Mail,
             tag: "Wajib",
           },
         ],
