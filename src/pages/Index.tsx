@@ -1,9 +1,13 @@
 import { GraduationCap } from "lucide-react";
 import Timeline from "@/components/Timeline";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <div className="fixed top-4 right-4 z-50">
+        <ThemeToggle />
+      </div>
       <header className="pt-16 pb-2 text-center px-4">
         <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 mb-5">
           <GraduationCap className="h-4 w-4 text-primary" />
