@@ -11,13 +11,13 @@ const Index = () => {
       <header className="pt-16 pb-2 text-center px-4">
         <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 mb-5">
           <GraduationCap className="h-4 w-4 text-primary" />
-          <span className="text-xs font-medium text-muted-foreground">Jurusan Fisika</span>
+          <span className="text-xs font-medium text-muted-foreground">Fisika UNDIP</span>
         </div>
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-foreground">
           Prosedur Kelulusan & Wisuda
         </h1>
         <p className="mt-2 text-muted-foreground max-w-md mx-auto text-sm">
-          Roadmap lengkap dari lembar pengesahan hingga SKL Fakultas. Klik tahapan untuk detail.
+          Roadmap lengkap dari Pendaftaran Wisuda, HKI, hingga Kelulusan
         </p>
       </header>
       <Timeline />

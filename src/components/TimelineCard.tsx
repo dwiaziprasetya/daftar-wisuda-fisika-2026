@@ -7,6 +7,58 @@ interface TimelineCardProps {
   onClick: () => void;
 }
 
+const parseLine = (text: string) => {
+  const elements: React.ReactNode[] = [];
+
+  // regex gabungan: [text|url] ATAU **bold**
+  const regex = /\[(.*?)\|(https?:\/\/[^\]]+)\]|\*\*(.*?)\*\*/g;
+
+  let lastIndex = 0;
+  let match;
+
+  while ((match = regex.exec(text)) !== null) {
+    const [full] = match;
+
+    // teks sebelum match
+    if (match.index > lastIndex) {
+      elements.push(text.slice(lastIndex, match.index));
+    }
+
+    // LINK
+    if (match[1] && match[2]) {
+      elements.push(
+        <a
+          key={match.index}
+          href={match[2]}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-primary underline hover:text-primary/80"
+        >
+          {match[1]}
+        </a>
+      );
+    }
+
+    // BOLD
+    else if (match[3]) {
+      elements.push(
+        <strong key={match.index} className="font-semibold text-foreground">
+          {match[3]}
+        </strong>
+      );
+    }
+
+    lastIndex = match.index + full.length;
+  }
+
+  // sisa teks
+  if (lastIndex < text.length) {
+    elements.push(text.slice(lastIndex));
+  }
+
+  return elements;
+};
+
 const tagColors: Record<string, string> = {
   Persiapan: "bg-sky-500/10 text-sky-400",
   Administrasi: "bg-amber-500/10 text-amber-400",
@@ -22,11 +74,10 @@ export const TimelineCard = ({ item, isActive, onClick }: TimelineCardProps) => 
   return (
     <div
       onClick={onClick}
-      className={`cursor-pointer rounded-lg border p-3 sm:p-4 transition-all duration-300 ${
-        isActive
-          ? "border-primary/50 bg-primary/5 shadow-[0_0_24px_hsl(var(--ring)/0.1)]"
-          : "border-border bg-card hover:border-primary/30"
-      }`}
+      className={`cursor-pointer rounded-lg border p-3 sm:p-4 transition-all duration-300 ${isActive
+        ? "border-primary/50 bg-primary/5 shadow-[0_0_24px_hsl(var(--ring)/0.1)]"
+        : "border-border bg-card hover:border-primary/30"
+        }`}
     >
       <div className="mb-1.5 sm:mb-2 flex flex-wrap items-center gap-1.5 sm:gap-2">
         {Icon && <Icon className="h-3.5 w-3.5 text-primary shrink-0" />}
@@ -88,8 +139,30 @@ export const DetailPanel = ({ item, onClose }: DetailPanelProps) => {
       {/* Body */}
       <div className="flex-1 overflow-y-auto px-4 sm:px-6 py-5">
         <h2 className="text-lg sm:text-xl font-bold text-foreground mb-4">{item.title}</h2>
-        
-        <p className="text-sm leading-relaxed text-muted-foreground mb-6">{item.detail}</p>
+
+        <div className="text-sm leading-relaxed text-muted-foreground mb-6 space-y-2">
+          {item.detail
+            .trim()
+            .split("\n")
+            .filter(Boolean)
+            .map((line, i) => {
+              const trimmed = line.trim();
+
+              const isNumbered = /^\d+\./.test(trimmed);
+              const isAlpha = /^[a-zA-Z]\./.test(trimmed);
+
+              let padding = "";
+
+              if (isNumbered) padding = "pl-2";
+              if (isAlpha) padding = "pl-6"; 
+
+              return (
+                <p key={i} className={padding}>
+                  {parseLine(trimmed)}
+                </p>
+              );
+            })}
+        </div>
 
         {/* Resources section (like roadmap.sh) */}
         {item.resources && item.resources.length > 0 && (
