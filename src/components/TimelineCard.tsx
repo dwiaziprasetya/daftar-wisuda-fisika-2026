@@ -10,7 +10,6 @@ interface TimelineCardProps {
 const parseLine = (text: string) => {
   const elements: React.ReactNode[] = [];
 
-  // regex gabungan: [text|url] ATAU **bold**
   const regex = /\[(.*?)\|(https?:\/\/[^\]]+)\]|\*\*(.*?)\*\*/g;
 
   let lastIndex = 0;
@@ -19,12 +18,10 @@ const parseLine = (text: string) => {
   while ((match = regex.exec(text)) !== null) {
     const [full] = match;
 
-    // teks sebelum match
     if (match.index > lastIndex) {
       elements.push(text.slice(lastIndex, match.index));
     }
 
-    // LINK
     if (match[1] && match[2]) {
       elements.push(
         <a
@@ -32,14 +29,13 @@ const parseLine = (text: string) => {
           href={match[2]}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-primary underline hover:text-primary/80"
+          className="text-primary hover:text-primary/80"
         >
           {match[1]}
         </a>
       );
     }
 
-    // BOLD
     else if (match[3]) {
       elements.push(
         <strong key={match.index} className="font-semibold text-foreground">
@@ -51,7 +47,6 @@ const parseLine = (text: string) => {
     lastIndex = match.index + full.length;
   }
 
-  // sisa teks
   if (lastIndex < text.length) {
     elements.push(text.slice(lastIndex));
   }
