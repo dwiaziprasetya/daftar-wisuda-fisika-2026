@@ -401,7 +401,7 @@ export const timelineNodes: TimelineNode[] = [
             summary:
               "Print dan isi formulir persyaratan wisuda",
             detail:
-              `Kalau status di SSO udah berubah jadi **Lulus Studi** dan menu wisuda udah muncul, udah bisa mulai daftar wisuda.
+              `Kalau status di SSO udah berubah jadi **Lulus Studi** dan menu wisuda udah muncul, udah bisa mulai daftar wisuda ya ges yaa.
 
               Download dan isi formulir AK.009, AK.010, dan AK.011  [di sini|https://docs.google.com/document/d/1zIuXdItUWypUqtWolku8irr3BE-3GlS8/edit?usp=drivesdk&ouid=117230210256870949382&rtpof=true&sd=true].
               `,
