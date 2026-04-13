@@ -196,7 +196,7 @@ function ParallelNode({
         </div>
         <div className="flex-1 flex items-center gap-2 pb-4">
           <div className="h-px flex-1 bg-border" />
-          <span className="text-[10px] text-muted-foreground whitespace-nowrap">↓ Semua jalur bergabung</span>
+          <span className="text-[10px] text-muted-foreground whitespace-nowrap">↓ Semua proses nyatu di sini ges</span>
           <div className="h-px flex-1 bg-border" />
         </div>
       </div>

@@ -71,15 +71,15 @@ export const timelineNodes: TimelineNode[] = [
       date: "Setelah Sidang",
       title: "Revisi & Lembar Pengesahan",
       summary:
-        "Melakukan revisi skripsi serta pengumpulan tanda tangan penguji dan pembimbing",
+        "Revisi skripsi + ngumpulin tanda tangan penguji dan pembimbing",
       detail: `
-        Setelah sidang, lakukan pencetakan lembar pengesahan, kemudian lanjutkan proses revisi sekaligus mengumpulkan tanda tangan dari 3 dosen penguji dan 2 dosen pembimbing. Apabila telah sampai pada pembimbing 1, umumnya nilai akan langsung diinput dan dapat dilihat melalui SSO.
+        Abis sidang, langsung cetak lembar pengesahan, terus lanjut revisi sambil ngumpulin tanda tangan dari 3 dosen penguji dan 2 dosen pembimbing. Biasanya kalau udah sampai ke pembimbing 1, nilai bakal langsung diinput dan bisa dicek di SSO.
 
-        Catatan:
+        **Catatan:**
 
-        1. Cetak lembar pengesahan sebanyak 3 lembar.
-        2. Lembar pengesahan akan disertakan dalam skripsi yang telah dijilid hardcover.
-        3. Tanda tangan Kaprodi dilakukan setelah skripsi dijilid, melalui Bu Iin.
+        **1. Cetak lembar pengesahan 3 lembar.**
+        **2. Lembar pengesahan nanti disatuin di skripsi yang udah dijilid hardcover.**
+        **3. Tanda tangan Kaprodi baru bisa setelah skripsi dijilid, lewat Bu Iin.**
       `,
       icon: ClipboardCheck,
       tag: "Wajib",
@@ -93,15 +93,16 @@ export const timelineNodes: TimelineNode[] = [
       date: "Setelah Revisi dan Nilai Keluar",
       title: "Hardcopy Skripsi",
       summary:
-        "Menjilid skripsi dalam bentuk hardcopy (cover abu-abu)",
+        "Jilid skripsi jadi hardcopy (cover abu-abu)",
       detail: `
-        Skripsi hardcopy dijilid dengan cover abu-abu dalam jumlah yang bersifat kondisional. Setelah dijilid, skripsi diserahkan kepada Bu Iin untuk proses permintaan tanda tangan Kaprodi.
-        
-        Catatan: Beberapa dosen pembimbing mungkin tidak menerima hardcopy dan hanya menerima softfile. Oleh karena itu, pastikan terlebih dahulu kepada masing-masing dosen pembimbing. Namun, untuk Perpustakaan FSM tetap bersifat wajib.
+        Kalau revisi udah kelar dan nilai udah keluar, lanjut jilid skripsi pakai cover abu-abu. Jumlahnya fleksibel ya, tergantung kebutuhan. Setelah dijilid, skripsi diserahin ke Bu Iin buat proses tanda tangan Kaprodi.
 
         1. Perpustakaan FSM (wajib)
         2. Dosen Pembimbing 1 (kondisional)
         3. Dosen Pembimbing 2 (kondisional)
+
+        **Catatan: Ada beberapa dosen pembimbing yang gak minta hardcopy, cukup softfile aja. Jadi mending konfirmasi dulu ke masing-masing dosen. Tapi kalau Perpustakaan FSM tetap wajib hardcopy ya.**
+
       `,
       icon: BookCopy,
       tag: "Wajib",
@@ -115,13 +116,13 @@ export const timelineNodes: TimelineNode[] = [
       date: "Setelah Jilid dan Tanda Tangan Lengkap",
       title: "Cap UPA pada Hardcopy",
       summary:
-        "Melakukan cap UPA pada seluruh hardcopy yang telah lengkap tanda tangan",
+        "Cap UPA ke semua hardcopy yang udah lengkap ttd",
       detail: `
-        Ambil seluruh skripsi yang telah dititipkan kepada Bu Iin, kemudian bawa ke UPA untuk mendapatkan cap atau stempel resmi.
+        Kalau semua skripsi udah dijilid dan tanda tangan lengkap, ambil lagi dari Bu Iin terus langsung bawa ke UPA buat dicap/stempel resmi.
 
-        Catatan: Setelah seluruh skripsi mendapatkan cap, dokumen dapat diserahkan kepada:
-        1. Perpustakaan FSM (untuk keperluan bebas perpustakaan)
-        2. Dosen Pembimbing 1 dan 2 (sebagai syarat surat bebas departemen)
+        **Catatan: Kalau udah dicap semua, skripsinya bisa langsung diserahin ke:**
+        **1. Perpustakaan FSM (buat urus bebas pustaka)**
+        **2. Dosen Pembimbing 1 dan 2 (syarat surat bebas departemen)**
       `,
       icon: Stamp,
       tag: "Wajib",
@@ -134,7 +135,7 @@ export const timelineNodes: TimelineNode[] = [
      ═══════════════════════════════════════════ */
   {
     type: "parallel",
-    label: "Paralel — HKI dapat diurus bersamaan dengan proses kelulusan",
+    label: "Bisa barengan — HKI bisa diurus sambil jalanin proses kelulusan",
     groups: [
       {
         id: "kelulusan-awal",
@@ -147,14 +148,14 @@ export const timelineNodes: TimelineNode[] = [
             date: "Setelah Skripsi di Cap UPA",
             title: "Surat Bebas Perpustakaan Fakultas",
             summary:
-              "Mengurus surat bebas pustaka di Perpustakaan FSM",
+              "Ngurus surat bebas pustaka di Perpustakaan FSM",
             detail: `
-            Sebelum menyerahkan 1 jilid hardcopy skripsi ke perpustakaan, mahasiswa diwajibkan mengikuti prosedur bebas pustaka FSM [lihat di sini|https://www.instagram.com/p/C1qf3ZmSYpI/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ==].
+            Sebelum nyerahin 1 jilid hardcopy skripsi ke perpus, wajib banget ngikutin dulu prosedur bebas pustaka FSM [lihat di sini|https://www.instagram.com/p/C1qf3ZmSYpI/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ==].
 
-            Setelah seluruh prosedur dipenuhi, silakan datang langsung ke Perpustakaan FSM dan menyampaikan kepada petugas bahwa prosedur telah diselesaikan, kemudian menyerahkan 1 jilid hardcopy skripsi.
+            Kalau semua prosedur udah beres, tinggal dateng ke Perpustakaan FSM, bilang ke petugas kalau semuanya udah selesai, terus serahin 1 jilid hardcopy skripsi.
 
-            Setelah menunggu beberapa saat, nama akan dipanggil dan mahasiswa akan menerima **Surat Bebas Pustaka Perpustakaan FSM**.
-            `,
+            Nunggu bentar, nanti nama kamu dipanggil dan bakal dapet **Surat Bebas Pustaka Perpustakaan FSM**.
+          `,
             icon: FileText,
             tag: "Wajib",
           },
@@ -163,23 +164,23 @@ export const timelineNodes: TimelineNode[] = [
             date: "Proses Bertahap",
             title: "Surat Bebas Departemen",
             summary:
-              "Tanda tangan Dosbim, Pak Jatmiko, Bu Iin, dan Kaprodi",
+              "Ngumpulin ttd dosbim, Pak Jatmiko, Bu Iin, sampai Kaprodi",
             detail:
               `
-              1. Meminta tanda tangan Dosen Pembimbing 1 dan 2, serta menyerahkan hardcopy skripsi apabila diminta.
-              2. Mengirimkan beberapa berkas ke email skripsi@fisika.fsm.undip.ac.id (dalam format .rar/.zip), serta melakukan konfirmasi kepada Pak Jatmiko terkait proses tanda tangan. Berkas yang dikirim meliputi:
+              1. Minta tanda tangan ke Dosen Pembimbing 1 & 2, sekalian serahin hardcopy skripsi kalau diminta.
+              2. Kirim beberapa berkas ke email skripsi@fisika.fsm.undip.ac.id (format .rar/.zip), terus konfirmasi ke Pak Jatmiko buat proses ttd. Berkasnya:
                  a. Biodata Alumni **PDF**
-                 b. Proposal Skripsi (yang telah ditandatangani) **WORD dan PDF**
-                 c. Skripsi (yang telah ditandatangani) **WORD dan PDF**
-                 d. Lembar Pengesahan yang telah ditandatangani **PDF**
+                 b. Proposal Skripsi (sudah ditandatangani) **WORD & PDF**
+                 c. Skripsi (sudah ditandatangani) **WORD & PDF**
+                 d. Lembar Pengesahan (sudah ditandatangani) **PDF**
                  e. Karya Ilmiah (YPJ) **PDF**
                  f. Surat Bebas Perpustakaan FSM **PDF**
                  g. Surat Bebas Perpustakaan Undip **PDF**
                  h. Presentasi Sidang Skripsi **PPTX**
-              3. Meminta tanda tangan Bu Iin dengan menunjukkan hardcopy sertifikat TOEFL.
-              4. Meminta tanda tangan Kaprodi sebagai tahap terakhir.
+              3. Minta tanda tangan Bu Iin, sambil nunjukin hardcopy sertifikat TOEFL.
+              4. Terakhir, minta tanda tangan Kaprodi.
 
-              **Catatan: Seluruh proses, kecuali tanda tangan Kaprodi, dapat dilakukan secara paralel.**
+              **Catatan: Semua proses bisa dikerjain paralel ya, kecuali ttd Kaprodi itu di akhir.**
             `,
             icon: FileText,
             tag: "Wajib",
@@ -292,14 +293,14 @@ export const timelineNodes: TimelineNode[] = [
       date: "Setelah Bebas Departemen",
       title: "Konfirmasi \"Lulus Studi\" di SSO",
       summary:
-        "Konfirmasi ke Kaprodi agar status di SSO berubah menjadi \"Lulus Studi\".",
+        "Konfirmasi ke Kaprodi biar status SSO jadi \"Lulus Studi\"",
       detail:
-        `Setelah Surat Bebas Departemen selesai, hubungi Pak Jatmiko/Kaprodi untuk mengkonfirmasi bahwa semua persyaratan telah dipenuhi. Kaprodi akan memperbarui status Anda di SSO menjadi \"Lulus Studi\". Status ini menjadi syarat utama untuk mendaftar wisuda.
-        
-        **Catatan: Biasanya otomatis tapi boleh banget buat follow up**
+        `Kalau Surat Bebas Departemen udah beres, langsung konfirmasi ke Pak Jatmiko/Kaprodi kalau semua syarat udah terpenuhi. Nanti status di SSO bakal diupdate jadi "Lulus Studi". Nah, ini penting banget karena jadi syarat utama buat daftar wisuda.
+
+        **Catatan: Biasanya sih otomatis ke update, tapi gak ada salahnya buat follow up biar aman.**
         `,
       icon: UserCheck,
-      tag: "Milestone",
+      tag: "Checkpoint Dulu Ges Di sini",
     },
   },
 
@@ -309,7 +310,7 @@ export const timelineNodes: TimelineNode[] = [
      ═══════════════════════════════════════════ */
   {
     type: "parallel",
-    label: "Paralel — Daftar Wisuda bisa dilakukan bersamaan dengan proses SKL",
+    label: "Bisa barengan — Daftar wisuda bisa sekalian pas proses SKL",
     groups: [
       {
         id: "kelulusan-akhir",
@@ -319,13 +320,13 @@ export const timelineNodes: TimelineNode[] = [
         items: [
           {
             step: "4A",
-            date: "Setelah Bebas Dept",
+            date: 'Setelah Lulus Studi di SSO',
             title: "SKL Departemen",
             summary:
-              "Mengirim berkas ke Bu Iin via WA Japri",
+              "Kirim berkas ke Bu Iin via WA japri",
             detail: `
-              Mengirim berkas (softfile) ke Bu Iin via Wa. berkas yang dikirim:
-              1. Pas Foto berwarna
+              Kirim semua berkas (softfile) ke Bu Iin lewat WA japri. Berkas yang perlu dikirim:
+              1. Pas foto berwarna
               2. DPA
               3. Scan KTP
               4. Surat Keterangan Bebas Lab
@@ -334,10 +335,12 @@ export const timelineNodes: TimelineNode[] = [
               7. SKPI
               8. Sertifikat SKPI
               9. Sertifikat TOEFL
-              10. Screenshot Bukti Kelulusan SSO
-              11. Bukti Pendaftaran HKI
+              10. Screenshot bukti kelulusan di SSO
+              11. Bukti pendaftaran HKI
 
-              Setelah mengirim lewat WA akan diminta mengisi data diri di WA. Tunggu beberapa saat di departemen maka akan mendapatkan hard file:
+              Setelah kirim lewat WA, biasanya kamu bakal diminta isi data diri juga. Tinggal isi aja sesuai arahan.
+
+              Nunggu bentar di departemen, nanti kamu bakal dapet hard file:
               1. SKL Departemen
               2. Surat Permohonan SKL Fakultas 
             `,
@@ -349,15 +352,16 @@ export const timelineNodes: TimelineNode[] = [
             date: "Langkah Terakhir",
             title: "SKL Fakultas",
             summary:
-              "Menyerahkan dokumen ke AP Lantai 2",
+              "Serahin dokumen ke AP Lantai 2",
             detail: `
-              Datang ke Gedung AP Lantai 2 bagian resepsionis, dengan melampirkan dokumen:
-                1. Foto copy Kartu Mahasiswa (KTM)
-                2. Pas foto hitam putih/berwarna ukuran 4x6 sebanyak 2 lembar
-                3. Foto copy Surat Bebas Departemen
-                4. Foto copy SKL Departemen
-                5. Bukti Pendaftaran HKI
-                6. Ditinggal saja selama 3 hari kerja
+              Datang ke Gedung AP Lantai 2 (bagian resepsionis), terus serahin dokumen berikut:
+                1. Fotokopi Kartu Mahasiswa (KTM)
+                2. Pas foto hitam putih/berwarna ukuran 4x6 (2 lembar)
+                3. Fotokopi Surat Bebas Departemen
+                4. Fotokopi SKL Departemen
+                5. Bukti pendaftaran HKI
+
+              Setelah itu tinggal ditinggal aja, biasanya diproses sekitar 3 hari kerja.
             `,
             icon: FileText,
             tag: "Wajib",
@@ -365,17 +369,19 @@ export const timelineNodes: TimelineNode[] = [
           {
             step: "4C",
             date: "3 Hari Kerja",
-            title: "Pengambilan dan Verifikasi SKL Fakultas",
+            title: "Ambil & Verifikasi SKL Fakultas",
             summary:
-              "Pengambilan SKL Fakultas setelah 3 hari kerja.",
+              "Ambil SKL Fakultas setelah 3 hari, lanjut verifikasi",
             detail: `
-              SKL Fakultas akan jadi dalam 3 hari kerja dan diambil di resepsionis lt. 1. Setelah jadi, SKL harus diverifikasi:
+              SKL Fakultas biasanya jadi sekitar 3 hari kerja dan bisa diambil di resepsionis lantai 1. Setelah itu, jangan lupa langsung diverifikasi ya:
 
               1. Fotokopi SKL sebanyak 5 lembar
-              2. Tempel foto 3x4 pada masing-masing lembar 
-              3. Bawa ke UPA untuk dicap/stempel
-              4. UPA akan meminta 1 lembar untuk arsip Fakultas
-              5. Sisa 4 lembar untuk keperluan pribadi (lamaran kerja, dll).
+              2. Tempel foto 3x4 di tiap lembar
+              3. Bawa ke UPA buat dicap/stempel
+              4. Dari UPA, 1 lembar bakal diambil buat arsip Fakultas
+              5. Sisa 4 lembar bisa dipakai buat keperluan pribadi (lamaran kerja, dll)
+
+              Udah beres ini, fix tinggal nunggu wisuda doang sih wkwk
             `,
             icon: Mail,
             tag: "Wajib",
@@ -391,77 +397,113 @@ export const timelineNodes: TimelineNode[] = [
           {
             step: "W1",
             date: "Setelah Lulus Studi di SSO",
-            title: "Surat Persyaratan Wisuda (AK.009)",
+            title: "Formulir Persyaratan Wisuda (AK.009)",
             summary:
-              "Isi dan cetak formulir AK.009 dari portal wisuda SSO.",
+              "Print dan isi formulir persyaratan wisuda",
             detail:
-              "Daftar Wisuda bisa dilakukan setelah status di SSO berubah menjadi \"Lulus Studi\" dan menu wisuda sudah muncul. Download dan isi formulir Surat Persyaratan Wisuda (AK.009) dari SSO.",
+              `Kalau status di SSO udah berubah jadi **Lulus Studi** dan menu wisuda udah muncul, udah bisa mulai daftar wisuda.
+
+              Download dan isi formulir AK.009, AK.010, dan AK.011  [disini|https://docs.google.com/document/d/1zIuXdItUWypUqtWolku8irr3BE-3GlS8/edit?usp=drivesdk&ouid=117230210256870949382&rtpof=true&sd=true].
+              `,
             icon: FileText,
             tag: "Wisuda",
           },
           {
             step: "W2",
-            date: "Siapkan",
-            title: "Fotokopi KTP (2 Lembar)",
-            summary: "Fotokopi KTP sebanyak 2 lembar.",
+            date: "Setelah Lulus Studi di SSO",
+            title: "Fotokopi KTP",
+            summary: "Fotokopi KTP sebanyak 2 lembar",
             detail:
-              "Siapkan fotokopi KTP yang masih berlaku sebanyak 2 lembar. Pastikan hasil fotokopi jelas dan terbaca.",
-            icon: IdCard,
+              "Fotokopi KTP 2 lembar, jangan lupa diperbesar biar jelas",
+            icon: FileText,
             tag: "Wisuda",
           },
           {
             step: "W3",
-            date: "Isi Formulir",
+            date: "Setelah Lulus Studi di SSO",
             title: "Formulir Keterangan Pribadi (AK.010)",
             summary:
-              "Isi formulir keterangan pribadi untuk kelengkapan wisuda.",
-            detail:
-              "Download dan isi Formulir Keterangan Pribadi (AK.010). Isi dengan data yang benar karena akan digunakan untuk keperluan administrasi wisuda.",
-            icon: BookOpen,
+              "Print dan isi formulir keterangan pribadi",
+            detail: `
+              1. Print formulir sebanyak 2 lembar
+              2. Isi dengan cara diketik (jangan tulis tangan)
+              3. Tempel pas foto 4x6 hitam putih (2 buah)
+            `,
+            icon: FileText,
             tag: "Wisuda",
           },
           {
             step: "W4",
-            date: "Isi Formulir",
+            date: "Setelah Lulus Studi di SSO",
             title: "Formulir Isian Biodata Ijazah (AK.011)",
             summary:
-              "Isi biodata yang akan tercetak di ijazah — pastikan ejaan benar!",
-            detail:
-              "Download dan isi Formulir Isian Biodata Ijazah (AK.011). PENTING: Periksa ejaan nama lengkap, tempat/tanggal lahir, dan gelar akademik dengan sangat teliti karena data ini akan tercetak di ijazah dan TIDAK BISA diubah setelah dicetak.",
-            icon: GraduationCap,
+              "Print dan isi formulir biodata ijazah",
+            detail: `
+              1. Print formulir sebanyak 2 lembar
+              2. Isi dengan cara diketik
+            `,
+            icon: FileText,
             tag: "Wisuda",
           },
           {
             step: "W5",
-            date: "Jika Ada",
+            date: "Setelah Lulus Studi di SSO",
             title: "Surat Ijin Cuti Kuliah (Opsional)",
             summary:
-              "Lampirkan surat ijin cuti jika pernah mengambil cuti kuliah.",
-            detail:
-              "Jika selama masa kuliah Anda pernah mengambil cuti akademik, lampirkan surat ijin cuti kuliah yang sudah disetujui. Jika tidak pernah cuti, langkah ini bisa dilewati.",
+              "Lampirkan surat ijin cuti kalau pernah cuti kuliah",
+            detail: "Lampirkan surat ijin cuti kuliah (kalau pernah cuti)",
             icon: FileText,
             tag: "Opsional",
           },
           {
             step: "W6",
-            date: "Dari SSO",
+            date: "Setelah Lulus Studi di SSO",
             title: "SKPI (Surat Keterangan Pendamping Ijazah)",
             summary:
-              "Siapkan SKPI asli, validasi SKPI, dan bukti mengisi SKPI di SSO.",
+              "Siapkan SKPI, validasi, dan bukti dari SSO",
             detail:
-              "Siapkan 3 dokumen terkait SKPI:\n\n1. SKPI Asli — cetak dari SSO.\n2. Validasi SKPI — pastikan data sudah divalidasi.\n3. Bukti Mengisi SKPI di SSO — screenshot atau cetak halaman konfirmasi.\n\nSKPI adalah dokumen pendamping ijazah yang menjelaskan capaian pembelajaran selama kuliah.",
-            icon: BookMarked,
+              `Siapkan 3 dokumen terkait SKPI:
+              1. SKPI asli
+              2. Validasi SKPI (sudah ttd Doswal & Kaprodi)
+              3. Bukti isi SKPI di SSO (diprint)
+              4. Sertifikat SKPI yang sesuai sama SSO (diprint)`,
+            icon: FileText,
             tag: "Wisuda",
           },
           {
             step: "W7",
-            date: "Dari Proses HKI",
+            date: "Setelah Dapet Nomor Urut HKI",
             title: "Bukti Pendaftaran HKI",
             summary:
-              "Lampirkan bukti pendaftaran HKI (nomor urut dari UPT Perpustakaan).",
-            detail:
-              "Lampirkan bukti pendaftaran HKI yang sudah didapatkan dari proses Daftar HKI sebelumnya (nomor urut dari UPT Perpustakaan Lt 5). Dokumen ini menjadi salah satu syarat wajib pendaftaran wisuda.",
-            icon: ShieldCheck,
+              "Lampirkan bukti pendaftaran HKI.",
+            detail: `
+              Melampirkan bukti pendaftaran HKI (berupa nomor urut)
+
+              **Catatan : Bisa make foto copy atau di scan dulu (soalnya ini dipake buat syarat SKL Fakultas juga)**
+            `,
+            icon: FileText,
+            tag: "Wisuda",
+          },
+          {
+            step: "W8",
+            date: "Setelah Semua Berkas Wisuda Lengkap",
+            title: "Pendaftaran Wisuda di AP Lantai 1",
+            summary:
+              "Datang ke Gedung AP Lantai 1",
+            detail: `
+              1. Siapin semua berkasnya di klip atau sekalian di mapin boleh
+              2. Datang ke Gedung AP Lantai 1 bagian Kemahasiswaan
+              3. Bilang ke Ibu Sri mau daftar wisuda
+              4. Terus kasih berkasnya ke beliau
+              5. Ditinggal beberapa jam
+              6. Balik lagi ke sana buat ngecek
+              7. Kalo ada revisi di revisi dulu
+              8. Kalo lolos alhamduliah
+              9. Tinggal nulis di buku kuning data diri kita
+              10. Udah tinggal nunggu di invite ke grup wisuda
+              11. Done, tinggal tidur aja wkwk
+            `,
+            icon: CheckCircle,
             tag: "Wisuda",
           },
         ],
@@ -476,14 +518,13 @@ export const timelineNodes: TimelineNode[] = [
     type: "step",
     item: {
       step: "✓",
-      date: "Semua Selesai 🎉",
-      title: "Proses Kelulusan & Wisuda Selesai!",
+      date: "Sudah Selesai Guys",
+      title: "Yaudah Nunggu Wisuda Aja WKWK",
       summary:
-        "SKL Fakultas terverifikasi, berkas wisuda lengkap — tidak ada tanggungan lagi! 🎓",
-      detail:
-        "Selamat! Semua proses kelulusan dan pendaftaran wisuda telah selesai. SKL Fakultas sudah terverifikasi dan berkas wisuda sudah lengkap. Tinggal menunggu jadwal wisuda dan mengikuti gladi bersih. Anda resmi bebas dari seluruh tanggungan akademik dan administrasi! 🎉",
+        "Muladi Dome bersiaplah 🙏",
+      detail: "Kalo udah masuk grup WA Wisuda aman ges",
       icon: CheckCircle,
-      tag: "Selesai ✅",
+      tag: "Done ✅",
     },
   },
 ];
