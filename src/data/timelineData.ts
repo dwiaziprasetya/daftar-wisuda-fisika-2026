@@ -154,7 +154,7 @@ export const timelineNodes: TimelineNode[] = [
 
             Kalau semua prosedur udah beres, tinggal dateng ke Perpustakaan FSM, bilang ke petugas kalau semuanya udah selesai, terus serahin 1 jilid hardcopy skripsi.
 
-            Nunggu bentar, nanti nama kamu dipanggil dan bakal dapet **Surat Bebas Pustaka Perpustakaan FSM**.
+            Nunggu bentar, nanti namamu dipanggil dan bakal dapet **Surat Bebas Pustaka Perpustakaan FSM**.
           `,
             icon: FileText,
             tag: "Wajib",
@@ -209,7 +209,7 @@ export const timelineNodes: TimelineNode[] = [
           },
           {
             step: "HKI 2",
-            date: "Bersamaan",
+            date: "Barengan Semua",
             title: "Surat Pengalihan HKI",
             summary: "Siapkan surat pengalihan dan materai 10.000",
             detail: `
@@ -225,7 +225,7 @@ export const timelineNodes: TimelineNode[] = [
           },
           {
             step: "HKI 3",
-            date: "Bersamaan",
+            date: "Barengan Semua",
             title: "Surat Pernyataan HKI",
             summary: "Siapkan surat pernyataan dan materai 10.000",
             detail: `
@@ -239,7 +239,7 @@ export const timelineNodes: TimelineNode[] = [
           },
           {
             step: "HKI 4",
-            date: "Bersamaan",
+            date: "Barengan Semua",
             title: "Dokumen Tanda Terima Berkas",
             summary: "Print Dokumen Tanda Terima Berkas.",
             detail: 'Download Dokumen Tanda Terima Berkas [di sini|https://drive.google.com/file/d/1PGyJPgilWtpv5KGlWKXnvML2puZTpkQb/view?usp=sharing] habis itu diisinya pas disana nanti 1 buat mereka satu buat kita',
@@ -248,7 +248,7 @@ export const timelineNodes: TimelineNode[] = [
           },
           {
             step: "HKI 5",
-            date: "Scan KTP",
+            date: "Barengan Semua",
             title: "Scan KTP",
             summary:
               "Scan KTP Semua Pencipta",
@@ -338,9 +338,9 @@ export const timelineNodes: TimelineNode[] = [
               10. Screenshot bukti kelulusan di SSO
               11. Bukti pendaftaran HKI
 
-              Setelah kirim lewat WA, biasanya kamu bakal diminta isi data diri juga. Tinggal isi aja sesuai arahan.
+              Setelah kirim lewat WA, biasanya bakal diminta isi data diri juga. Tinggal isi aja sesuai arahan.
 
-              Nunggu bentar di departemen, nanti kamu bakal dapet hard file:
+              Nunggu bentar di departemen, nanti bakal dapet hard file:
               1. SKL Departemen
               2. Surat Permohonan SKL Fakultas 
             `,
