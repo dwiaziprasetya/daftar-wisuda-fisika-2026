@@ -425,7 +425,7 @@ export const timelineNodes: TimelineNode[] = [
             summary:
               "Print dan isi formulir keterangan pribadi",
             detail: `
-              1. Print formulir sebanyak 2 lembar
+              1. Print formulir sebanyak 2 rangkap
               2. Isi dengan cara diketik (jangan tulis tangan)
               3. Tempel pas foto 4x6 hitam putih (2 buah)
             `,
@@ -439,7 +439,7 @@ export const timelineNodes: TimelineNode[] = [
             summary:
               "Print dan isi formulir biodata ijazah",
             detail: `
-              1. Print formulir sebanyak 2 lembar
+              1. Print formulir sebanyak 2 rangkap
               2. Isi dengan cara diketik
             `,
             icon: FileText,
