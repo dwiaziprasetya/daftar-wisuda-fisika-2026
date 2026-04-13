@@ -319,7 +319,7 @@ export const timelineNodes: TimelineNode[] = [
         side: "left",
         items: [
           {
-            step: "4A",
+            step: "6A",
             date: 'Setelah Lulus Studi di SSO',
             title: "SKL Departemen",
             summary:
@@ -348,7 +348,7 @@ export const timelineNodes: TimelineNode[] = [
             tag: "Wajib",
           },
           {
-            step: "4B",
+            step: "6B",
             date: "Langkah Terakhir",
             title: "SKL Fakultas",
             summary:
@@ -367,7 +367,7 @@ export const timelineNodes: TimelineNode[] = [
             tag: "Wajib",
           },
           {
-            step: "4C",
+            step: "6C",
             date: "3 Hari Kerja",
             title: "Ambil & Verifikasi SKL Fakultas",
             summary:

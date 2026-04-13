@@ -1,5 +1,5 @@
 <div style="max-width: 640px; margin: auto; font-family: sans-serif; line-height: 1.6;">
-  <h1>Daftar Wisuda Fisika 2026 (Unofficial)</h1>
+  <h1>Alur Daftar Wisuda Fisika 2026 UNDIP (Unofficial)</h1>
 
   <p>Panduan singkat alur daftar wisuda untuk mahasiswa fisika undip.</p>
 
