@@ -10,17 +10,16 @@ const Index = () => {
       <div className="fixed top-4 right-4 z-50 flex items-center gap-2">
         <Button
           variant="outline"
-          size="icon"
-          className="h-9 w-9 rounded-full"
+          className="h-9 rounded-full px-3 gap-1.5"
           asChild
         >
           <a
             href="https://github.com/dwiaziprasetya/daftar-wisuda-fisika-2026"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Source Code"
           >
             <Github className="h-4 w-4" />
+            <span className="text-xs font-medium">Kontribusi</span>
           </a>
         </Button>
         <ThemeToggle />
