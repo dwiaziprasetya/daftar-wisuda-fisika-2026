@@ -23,7 +23,7 @@ const Index = () => {
         </h1>
 
         <p className="mt-2 text-muted-foreground max-w-md mx-auto text-sm">
-          Alur dari daftar Wisuda, daftar HKI, dan kelulusan ya ges ya
+          Alur dari daftar Wisuda, daftar HKI, dan Kelulusan ya ges ya
         </p>
       </header>
 

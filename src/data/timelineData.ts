@@ -150,7 +150,7 @@ export const timelineNodes: TimelineNode[] = [
             summary:
               "Ngurus surat bebas pustaka di Perpustakaan FSM",
             detail: `
-            Sebelum nyerahin 1 jilid hardcopy skripsi ke perpus, wajib banget ngikutin dulu prosedur bebas pustaka FSM [lihat di sini|https://www.instagram.com/p/C1qf3ZmSYpI/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ==].
+            Sebelum nyerahin 1 jilid hardcopy skripsi ke perpus, wajib banget ngikutin dulu prosedur bebas pustaka FSM lihat [di sini|https://www.instagram.com/p/C1qf3ZmSYpI/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ==].
 
             Kalau semua prosedur udah beres, tinggal dateng ke Perpustakaan FSM, bilang ke petugas kalau semuanya udah selesai, terus serahin 1 jilid hardcopy skripsi.
 
