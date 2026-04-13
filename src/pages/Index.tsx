@@ -1,12 +1,28 @@
-import { GraduationCap } from "lucide-react";
+import { GraduationCap, Github } from "lucide-react";
 import Timeline from "@/components/Timeline";
 import ThemeToggle from "@/components/ThemeToggle";
+import { Button } from "@/components/ui/button";
 import { APP_CONFIG } from "@/config/appConfig";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      <div className="fixed top-4 right-4 z-50">
+      <div className="fixed top-4 right-4 z-50 flex items-center gap-2">
+        <Button
+          variant="outline"
+          size="icon"
+          className="h-9 w-9 rounded-full"
+          asChild
+        >
+          <a
+            href="https://github.com/dwiaziprasetya/daftar-wisuda-fisika-2026"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Source Code"
+          >
+            <Github className="h-4 w-4" />
+          </a>
+        </Button>
         <ThemeToggle />
       </div>
 
